@@ -113,6 +113,51 @@
       text-decoration-color:rgba(26,26,26,.8);
     }
 
+    .hero-card{
+  border-radius:var(--radius);
+  padding:44px 46px;
+  background:transparent;
+  display:grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap:32px;
+  align-items:center;
+}
+
+.hero-copy{
+  min-width:0;
+}
+
+.hero-portrait-wrap{
+  display:flex;
+  justify-content:flex-end;
+}
+
+.hero-portrait{
+  width:min(320px, 100%);
+  aspect-ratio:4 / 5;
+  object-fit:cover;
+  border-radius:28px;
+  border:1px solid rgba(26,26,26,.12);
+  box-shadow:0 18px 45px rgba(26,26,26,.10);
+  background:#eee;
+}
+
+@media (max-width: 980px){
+  .hero-card{
+    grid-template-columns:1fr;
+    padding:34px 22px;
+  }
+
+  .hero-portrait-wrap{
+    justify-content:flex-start;
+  }
+
+  .hero-portrait{
+    width:min(260px, 100%);
+  }
+}
+
+
     .wordmark{
       font-family:var(--mono);
       font-weight:500;
@@ -155,7 +200,7 @@
     .hero-greeting{
       margin:0;
       font-family:var(--serif);
-      font-size:clamp(48px, 6vw, 88px);
+      font-size:clamp(50px, 5vw, 90px);
       line-height:1.02;
       font-weight:500;
       letter-spacing:.01em;
@@ -163,14 +208,14 @@
 
     .hero-sub{
       margin:16px 0 0;
-      max-width:58ch;
+      max-width:80ch;
       font-family:var(--mono);
-      font-size:12px;
+      font-size:14px;
       font-weight:400;
       text-transform:none;
       letter-spacing:.18em;
       line-height:1.75;
-      color:rgba(26,26,26,.62);
+      color:rgba(23, 22, 22, 0.62);
     }
 
     .hero-actions{
@@ -255,6 +300,62 @@
     }
     .dropdown-item:hover{ background:rgba(203,218,210,.65); }
 
+    .logic-content{
+  display:none;
+  margin-top:18px;
+  padding-top:8px;
+  line-height:1.9;
+  color:rgba(26,26,26,.74);
+}
+
+.logic-content p{
+  margin:0 0 18px;
+}
+
+.project-showcase{
+  display:grid;
+  gap:20px;
+}
+
+.process-list{
+  margin:16px 0 0;
+  padding-left:20px;
+  line-height:1.9;
+}
+
+.process-list li{
+  margin-bottom:14px;
+}
+
+.reflection{
+  margin-top:10px;
+}
+
+.detail-degree{
+  margin-bottom:24px;
+  color:rgba(26,26,26,.62);
+}
+
+.github-cta{
+  display:inline-flex;
+  align-items:center;
+  padding:12px 16px;
+  border-radius:999px;
+  border:1px solid rgba(26,26,26,.14);
+  text-decoration:none;
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:.12em;
+  background:rgba(255,255,255,.6);
+  transition:background var(--transition) ease, border-color var(--transition) ease, transform var(--transition) ease;
+}
+
+.github-cta:hover{
+  background:rgba(203,218,210,.55);
+  border-color:rgba(26,26,26,.24);
+  transform:translateY(-1px);
+}
+
     /* Experience timeline */
     .timeline{
       border-radius:var(--radius);
@@ -262,106 +363,137 @@
       border:1px solid rgba(26,26,26,.10);
       padding:22px;
     }
-
     .timeline-grid{
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap:18px;
-      align-items:start;
-    }
+  display:grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap:18px;
+  align-items:start;
+}
 
-    @media (max-width: 980px){
-      .page{ padding:calc(var(--nav-h) + 10px) 22px 80px; }
-      .timeline-grid{ grid-template-columns:1fr; }
-      .hero-card{ padding:34px 22px; }
-    }
+.timeline-cards{
+  height:430px;
+  overflow-y:auto;
+  padding:18px 14px 18px 6px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  scroll-snap-type:y mandatory;
+  scroll-behavior:smooth;
+  border-radius:20px;
+  background:linear-gradient(180deg, rgba(248,248,246,.72), rgba(248,248,246,.34));
+  scrollbar-width:none;
+}
 
-    .timeline-cards{
-      position:relative;
-      height:430px;
-      border-radius:20px;
-      overflow:hidden;
-      background:linear-gradient(180deg, rgba(248,248,246,.7), rgba(248,248,246,.3));
-    }
+.timeline-cards::-webkit-scrollbar{
+  display:none;
+}
 
-    .t-card{
-      position:absolute;
-      left:50%;
-      top:50%;
-      width:min(340px, 92%);
-      transform:
-        translate(calc(-50% + var(--x)), calc(-50% + var(--y)))
-        rotate(var(--r));
-      transition:transform var(--transition) ease, background var(--transition) ease, box-shadow var(--transition) ease, border-color var(--transition) ease;
-      border-radius:24px;
-      border:1px solid rgba(26,26,26,.14);
-      background:rgba(248,248,246,.92);
-      box-shadow:0 10px 26px rgba(26,26,26,.06);
-      padding:18px 18px 16px;
-      cursor:pointer;
-      user-select:none;
-    }
+.t-card{
+  position:relative;
+  min-height:118px;
+  width:100%;
+  border-radius:22px;
+  border:1px solid rgba(26,26,26,.12);
+  background:linear-gradient(180deg, rgba(255,255,255,.92), rgba(246,244,239,.9));
+  box-shadow:
+    0 12px 30px rgba(26,26,26,.06),
+    inset 0 1px 0 rgba(255,255,255,.7);
+  padding:18px 18px 16px;
+  cursor:pointer;
+  scroll-snap-align:center;
+  transition:
+    transform .35s ease,
+    box-shadow .35s ease,
+    border-color .35s ease,
+    background .35s ease,
+    opacity .35s ease;
+  opacity:.72;
+  transform:scale(.965);
+}
 
-    .t-card:hover{
-      border-color:rgba(26,26,26,.26);
-      box-shadow:0 18px 40px rgba(26,26,26,.10);
-    }
+.t-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:22px;
+  pointer-events:none;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.55), transparent 30%),
+    radial-gradient(circle at top right, rgba(203,218,210,.28), transparent 32%);
+}
 
-    .t-card.is-active{
-      background:var(--sage);
-      border-color:rgba(26,26,26,.22);
-      box-shadow:0 26px 60px rgba(26,26,26,.14);
-      z-index:5;
-      transform:
-        translate(calc(-50% + var(--x)), calc(-50% + var(--y) - 16px))
-        rotate(var(--r))
-        scale(1.03);
-    }
+.t-card:hover{
+  border-color:rgba(26,26,26,.22);
+  opacity:.92;
+  transform:scale(.985);
+}
 
-    .t-card-inner{
-      display:flex;
-      align-items:flex-start;
-      gap:14px;
-    }
+.t-card.is-active{
+  background:linear-gradient(180deg, rgba(203,218,210,.92), rgba(191,214,203,.88));
+  border-color:rgba(26,26,26,.2);
+  box-shadow:
+    0 22px 48px rgba(26,26,26,.12),
+    inset 0 1px 0 rgba(255,255,255,.55);
+  opacity:1;
+  transform:translateX(10px) scale(1);
+}
 
-    .t-icon{
-      width:38px;
-      height:38px;
-      border-radius:14px;
-      background:rgba(26,26,26,.06);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      flex:0 0 auto;
-    }
+.t-card-inner{
+  display:flex;
+  align-items:flex-start;
+  gap:14px;
+  position:relative;
+  z-index:1;
+}
 
-    .t-icon svg{
-      width:20px;
-      height:20px;
-      opacity:.9;
-    }
+.t-icon{
+  width:44px;
+  height:44px;
+  border-radius:14px;
+  background:rgba(255,255,255,.38);
+  border:1px solid rgba(26,26,26,.06);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 auto;
+}
 
-    .t-meta{
-      flex:1 1 auto;
-      min-width:0;
-    }
+.t-icon svg{
+  width:20px;
+  height:20px;
+  opacity:.92;
+}
 
-    .t-year{
-      font-family:var(--mono);
-      font-size:12px;
-      letter-spacing:.20em;
-      font-weight:500;
-      text-transform:uppercase;
-      color:rgba(26,26,26,.72);
-    }
+.t-year{
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:.18em;
+  font-weight:500;
+  text-transform:uppercase;
+  color:rgba(26,26,26,.68);
+}
 
-    .t-role{
-      margin-top:10px;
-      font-family:var(--serif);
-      font-size:20px;
-      line-height:1.05;
-      font-weight:500;
-    }
+.t-role{
+  margin-top:10px;
+  font-family:var(--serif);
+  font-size:20px;
+  line-height:1.08;
+  font-weight:600;
+}
+
+@media (max-width: 980px){
+  .timeline-grid{
+    grid-template-columns:1fr;
+  }
+
+  .timeline-cards{
+    height:340px;
+  }
+
+  .t-card.is-active{
+    transform:none;
+  }
+}
 
     .timeline-detail{
       border-radius:var(--radius);
@@ -684,24 +816,33 @@
   <div class="page">
     <section id="about" class="hero">
       <div class="hero-card">
-        <h1 class="hero-greeting">Hi, I'm Sharon.</h1>
-        <p class="hero-sub">A storyteller bridging Economic Rigor, Information Systems, and Human Impact.</p>
+        <div class="hero-copy">
+          <h1 class="hero-greeting">Hi, I'm Sharon Lei.</h1>
+          <p class="hero-sub">An analytical thinker focused on learning how complex systems behave, and how better decisions shape them.</p>
 
-        <div class="hero-actions">
-          <div class="dropdown" id="cvDropdown">
-            <button class="pill-button" id="cvButton" type="button" aria-haspopup="true" aria-expanded="false">
+          <div class="hero-actions">
+            <a href="Attachment/Lei_Sze_Wing_CV.pdf"
+               download="Sharon_CV.pdf"
+               class="pill-button"
+               style="text-decoration: none; display: inline-flex; align-items: center;">
               Download CV
-              <svg class="chev" viewBox="0 0 24 24" aria-hidden="true">
-                <path fill="currentColor" d="M7 10l5 5 5-5z"/>
+              <svg class="chev" style="transform: rotate(-90deg); margin-left: 8px;" viewBox="0 0 24 24" width="18" height="18">
+                <path fill="currentColor" d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/>
               </svg>
-            </button>
-            <div class="dropdown-menu" id="cvMenu" role="menu" aria-label="Download CV menu">
-              <button class="dropdown-item" type="button" data-link="#" role="menuitem">English CV</button>
-            </div>
+            </a>
           </div>
+        </div>
+    
+        <div class="hero-portrait-wrap">
+          <img
+            src="Attachment/self-portrait.JPG"
+            alt="Portrait of Sharon Lei"
+            class="hero-portrait"
+          />
         </div>
       </div>
     </section>
+    
 
     <section id="experience" class="section">
       <div class="section-title">Experience</div>
@@ -755,102 +896,183 @@
           Open to conversations. Whether you're hiring, collaborating, or just curious, I'd love to hear from you.
         </div>
 
-        <form class="form" id="contactForm">
+        <form
+          class="form"
+          id="contactForm"
+          action="https://formspree.io/f/xnjgelpv"
+          method="POST"
+        >
           <div class="field">
             <label for="name">Name</label>
-            <input id="name" name="name" type="text" autocomplete="name" />
+            <input id="name" name="name" type="text" autocomplete="name" required />
           </div>
+        
           <div class="field">
             <label for="email">Email</label>
-            <input id="email" name="email" type="email" autocomplete="email" />
+            <input id="email" name="email" type="email" autocomplete="email" required />
           </div>
+        
           <div class="field" style="grid-column:1 / -1;">
             <label for="message">Message</label>
-            <textarea id="message" name="message"></textarea>
+            <textarea id="message" name="message" required></textarea>
           </div>
+        
           <div class="submit-row" style="grid-column:1 / -1;">
             <button class="pill-button" type="submit">Send Message</button>
             <div class="success" id="successMsg">Message sent! I'll be in touch soon.</div>
           </div>
-        </form>
+      </form>
+      
       </div>
     </section>
   </div>
 
   <script>
-    const $ = (sel, root=document) => root.querySelector(sel);
-    const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+    const $ = (sel, root = document) => root.querySelector(sel);
+    const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
-    // ----- CV dropdown -----
-    const cvDropdown = $("#cvDropdown");
-    const cvButton = $("#cvButton");
-    const cvMenu = $("#cvMenu");
-
-    function setDropdown(open){
-      cvButton.setAttribute("aria-expanded", open ? "true" : "false");
-      cvMenu.classList.toggle("is-open", open);
-    }
-
-    cvButton.addEventListener("click", () => {
-      const open = !cvMenu.classList.contains("is-open");
-      setDropdown(open);
-    });
-
-    document.addEventListener("click", (e) => {
-      if (!cvDropdown.contains(e.target)) setDropdown(false);
-    });
-
-    $$(".dropdown-item", cvMenu).forEach(btn => {
-      btn.addEventListener("click", () => {
-        const href = btn.getAttribute("data-link");
-        setDropdown(false);
-        if (href && href !== "#") window.location.href = href;
-      });
-    });
 
     // ----- Timeline data -----
     const timeline = [
       {
         key: "foundations",
         year: "2020–2024",
-        role: "HKUST",
+        role: "Hong Kong University of Science and Technology",
         icon: "cap",
         title: "The Dual-Degree Foundation (HKUST)",
-        copy: "Designed a synchronized Python & SQL ecosystem to bridge front-of-house and kitchen operations—translating operational workflows into reliable database systems.",
+        hasLogic: true,
+        copy:`
+        <p style="margin-bottom: 40px;"><em>BBA in Economics, and in Information Systems (Business Analytics)</em></p>
+        "My first deep dive into structured problem-solving through economics, systems design, and business analytics."
+        `,
+        logicCopy: `
+          <div class="project-showcase">
+            <div>
+              <p>Designed a synchronized <strong>Python &amp; SQL</strong> ecosystem for a cafe to bridge front-of-house and kitchen operations.</p>
+              <ul class="process-list">
+                <li><strong>Database Management:</strong> Developed a fully normalized schema to ensure real-time data integrity across customer, manager, and kitchen terminals.</li>
+                <li><strong>Systems Thinking:</strong> Decomposed a physical operational workflow into a logical three-tiered digital architecture.</li>
+              </ul>
+            </div>
+            <div class="reflection">
+              <a href="https://github.com/Swleiii/Coursework" class="github-cta" target="_blank" rel="noreferrer">Inspect Database Schema &amp; Logic</a>
+            </div>
+          </div>
+        `
       },
       {
         key: "nlp",
-        year: "2022",
+        year: "2022-2024",
         role: "Finance Research",
         icon: "chart",
-        title: "Deciphering Information Asymmetry",
-        copy: "Built structured analysis around AI-generated financial news and quantified how information flow influences market behavior.",
+        title: "Building Analytical and Methodological Discipline",
+        hasLogic: true,
+        copy: `
+        <p style="margin-bottom: 40px;"><em>Finance Research Assistant</em></p>
+        "This experience shaped how I think: asking better questions, testing ideas carefully, and drawing conclusions from evidence."
+        `,
+        logicCopy: `
+        <div class="project-showcase">
+          <div>
+            <p><strong>Research 1: Kamikazes in Public Procurement</strong></p>
+            <ul class="process-list">
+              <li>Applied econometric methodologies, including regression and time-series analysis, to assess the correlation between public procurement bidding and service quality in the paper, “Kamikazes in Public Procurement”.</li>
+              <li>Authored an independent research report: “Bid-rigging in Highway Repair in Brazil”.</li>
+            </ul>
+          </div>
+
+          <div class="reflection">
+            <p><strong>Research 2: FinBert, A Large Language Model Approach to Extracting Information from Financial Text</strong></p>
+            <ul class="process-list">
+              <li>Structured data collection and processing protocols to analyze financial fraud patterns in transactional datasets in the paper, “FinBert, A Large Language Model Approach to Extracting Information from Financial Text”.</li>
+              <li>Assessed the performance of multiple predictive models to identify optimal detection strategies, building a data-driven and critical approach to risk analysis.</li>
+            </ul>
+          </div>
+        </div>
+
+        `
       },
-      {
-        key: "consulting",
-        year: "2023",
-        role: "Consulting",
-        icon: "nodes",
-        title: "Consulting & Real-World Feasibility",
-        copy: "Modeled feasibility for complex systems and executed digital transformation under capital and operational constraints.",
-      },
+        {
+          key: "consulting",
+          year: "2023",
+          role: "Consulting",
+          icon: "nodes",
+          title: "Digitalisation Plan",
+          hasLogic: true,
+          copy: `
+          <p style="margin-bottom: 40px;"><em>Consulting Intern — Technology & Financial Transformation</em></p>
+          "A transition from analytical models to solutions that must survive real constraints."
+          `,
+          logicCopy: `
+            <div class="project-showcase">
+              <div>
+                <p>Evaluated the commercial viability of a <strong>$30M+ technology project</strong> and supported digital transformation initiatives for financial clients.</p>
+                <ul class="process-list">
+                  <li><strong>Financial Modeling:</strong> Built scenario analyses to assess risk, scalability, and investment feasibility.</li>
+                  <li><strong>Constraint Navigation:</strong> Balanced technical potential with capital, regulatory, and operational limitations.</li>
+                  <li><strong>Stakeholder Alignment:</strong> Communicated complex trade-offs to non-technical decision-makers.</li>
+                </ul>
+              </div>
+              <div class="reflection">
+                <p><strong>Reflection:</strong> A model is only useful if it can be implemented. This experience shifted my focus from theoretical optimality to practical viability.</p>
+              </div>
+            </div>
+          `
+        },
       {
         key: "startup",
         year: "2023–2024",
         role: "Co-Founder",
         icon: "robot",
-        title: "The Entrepreneurial Feedback Loop",
-        copy: "Co-founded an AI-driven job-matching platform and iterated an NLP model to 80% accuracy based on real user feedback.",
-        hasLogic: true
+        title: "The Entrepreneurial Iterative Mindset",
+        hasLogic: true,
+        copy: `
+        <p style="margin-bottom: 40px;"><em>Co-Founder — AI-Driven Job Matching Platform</em></p>
+        "Designing a system that learns from real users' painpoints."
+        `,
+        logicCopy: `
+          <div class="project-showcase">
+            <div>
+              <p>Led development of an <strong>NLP-based matching algorithm</strong>, iterating toward 80% accuracy through continuous user feedback.</p>
+              <ul class="process-list">
+                <li><strong>Iterative Design:</strong> Refined model performance through real-world testing rather than static optimization.</li>
+                <li><strong>User-Centered Thinking:</strong> Prioritized outcomes that improved practical usefulness over purely technical metrics.</li>
+                <li><strong>End-to-End Ownership:</strong> Managed product development, strategy, and funding acquisition.</li>
+              </ul>
+            </div>
+            <div class="reflection">
+              <p><strong>Reflection:</strong> Building a product revealed that uncertainty is not something to eliminate, but to navigate through rapid learning cycles.</p>
+            </div>
+          </div>
+        `
       },
       {
         key: "warwick",
         year: "2024–2025",
         role: "Warwick MSc",
         icon: "book",
-        title: "Formalizing Rigor (Warwick)",
-        copy: "Strengthened the ability to reduce extreme complexity into formal, structured frameworks for strategic decision-making.",
-        hasLogic: true
+        title: "Academic Research",
+        hasLogic: true,
+        copy: `
+        <p style="margin-bottom: 40px;"><em>MSc Economics and International Financial Economics — Distinction</em></p>
+        "Graduate research exploring how firms’ intangible asset portfolios shape financial stability and leverage capacity. 
+        Using panel data of North American firms (2000–2024) and advanced econometric modeling in Stata, the project analyses how asset standardization, innovation, and industry structure interact to influence capital structure decisions."
+        `,
+        logicCopy: `
+          <div class="project-showcase">
+            <div>
+              <p>Developed quantitative models examining how <strong>intangible assets influence financial stability</strong> and strategic behavior.</p>
+              <ul class="process-list">
+                <li><strong>Formal Modeling:</strong> Represented real-world uncertainty through structured economic frameworks.</li>
+                <li><strong>Strategic Analysis:</strong> Studied equilibrium outcomes in competitive environments.</li>
+                <li><strong>Technical Communication:</strong> Translated abstract results into actionable insights for broader audiences.</li>
+              </ul>
+            </div>
+            <div class="reflection">
+              <a href="https://github.com/Swleiii/Master-Dissertation" class="github-cta" target="_blank" rel="noreferrer">Full Dissertation and analysis &amp; Logic</a>
+            </div>
+          </div>
+        `
       }
     ];
 
@@ -882,28 +1104,19 @@
     const cardsEl = $("#timelineCards");
     const detailEl = $("#timelineDetail");
 
-    const positions = [
-      { x:-245, y:75,  r:-6 },
-      { x:-120, y:20,  r:4  },
-      { x:0,    y:58,  r:-2 },
-      { x:120,  y:20,  r:6  },
-      { x:245,  y:75,  r:-4 }
-    ];
-
     let activeKey = timeline[3].key; // startup default
 
     function renderCards(){
       cardsEl.innerHTML = "";
-      timeline.forEach((item, idx) => {
-        const pos = positions[idx % positions.length] || positions[0];
+
+      timeline.forEach((item) => {
         const btn = document.createElement("div");
         btn.className = "t-card" + (item.key === activeKey ? " is-active" : "");
-        btn.style.setProperty("--x", pos.x + "px");
-        btn.style.setProperty("--y", pos.y + "px");
-        btn.style.setProperty("--r", pos.r + "deg");
-        btn.setAttribute("role","button");
-        btn.setAttribute("tabindex","0");
-        btn.setAttribute("aria-label", item.role + " " + item.year);
+        btn.dataset.key = item.key;
+        btn.setAttribute("role", "button");
+        btn.setAttribute("tabindex", "0");
+        btn.setAttribute("aria-label", `${item.role} ${item.year}`);
+
         btn.innerHTML = `
           <div class="t-card-inner">
             <div class="t-icon">${iconMarkup(item.icon)}</div>
@@ -913,81 +1126,117 @@
             </div>
           </div>
         `;
-        btn.addEventListener("click", () => setActive(item.key));
+
+        btn.addEventListener("click", () => setActive(item.key, true));
         btn.addEventListener("keydown", (e) => {
-          if (e.key === "Enter" || e.key === " ") setActive(item.key);
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            setActive(item.key, true);
+          }
         });
-        cardsEl.appendChild(btn);
-      });
-    }
 
-    function buildDetail(item){
-      const logicVisible = !!item.hasLogic;
-      return `
-        <h2 class="detail-title">${item.title}</h2>
-        <div class="detail-copy">${item.copy}</div>
+    cardsEl.appendChild(btn);
+  });
+}
 
-        <div class="logic-wrap ${logicVisible ? "is-visible" : ""}" id="logicWrap">
-          <button class="logic-btn" type="button" id="logicBtn" ${logicVisible ? "" : "disabled"}>
-            Show the Logic
-          </button>
-          <div class="thinking" id="thinkingLine" aria-live="polite" style="display:none;">
-            <span>Thinking</span>
-            <span class="dots" aria-hidden="true">
-              <span class="dot-anim"></span>
-              <span class="dot-anim"></span>
-              <span class="dot-anim"></span>
-            </span>
-          </div>
-          <div class="logic-metrics" id="logicMetrics">
-            <div class="metric">
-              <strong>Accuracy</strong>
-              <span>80%</span>
-            </div>
-            <div class="metric">
-              <strong>Info Symmetry</strong>
-              <span>-25%</span>
-            </div>
-          </div>
-        </div>
+function buildDetail(item){
+  const logicVisible = !!item.hasLogic;
 
-        <div class="detail-label">Tap a card to continue</div>
-      `;
-    }
+  return `
+    <h2 class="detail-title">${item.title}</h2>
+    <div class="detail-copy">${item.copy}</div>
+
+    <div class="logic-wrap ${logicVisible ? "is-visible" : ""}" id="logicWrap">
+      <button class="logic-btn" type="button" id="logicBtn" ${logicVisible ? "" : "disabled"}>
+        Show the Logic
+      </button>
+
+      <div class="thinking" id="thinkingLine" aria-live="polite" style="display:none;">
+        <span>Thinking</span>
+        <span class="dots" aria-hidden="true">
+          <span class="dot-anim"></span>
+          <span class="dot-anim"></span>
+          <span class="dot-anim"></span>
+        </span>
+      </div>
+
+      <div class="logic-content" id="logicContent" style="display:none;">
+        ${item.logicCopy || ""}
+      </div>
+    </div>
+
+    <div class="detail-label">Tap a card to continue</div>
+  `;
+}
 
     let thinkingTimer = null;
     let isThinking = false;
 
-    function setActive(key){
-      activeKey = key;
-      renderCards();
+    function setActive(key, scrollCard = false){
+  activeKey = key;
+  renderCards();
 
-      const item = timeline.find(t => t.key === key);
-      detailEl.innerHTML = buildDetail(item);
+  const item = timeline.find(t => t.key === key);
+  detailEl.innerHTML = buildDetail(item);
 
-      const logicWrap = $("#logicWrap");
-      const logicBtn = $("#logicBtn");
-      const thinkingLine = $("#thinkingLine");
-      const metrics = $("#logicMetrics");
+  if (scrollCard) {
+    const activeCard = cardsEl.querySelector(`[data-key="${key}"]`);
+    activeCard?.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+  }
 
-      if (logicWrap && logicBtn){
-        logicBtn.addEventListener("click", () => {
-          if (isThinking) return;
-          isThinking = true;
+  const logicBtn = $("#logicBtn");
+  const thinkingLine = $("#thinkingLine");
+  const logicContent = $("#logicContent");
 
-          metrics.classList.remove("is-visible");
-          metrics.style.display = "none";
-          thinkingLine.style.display = "flex";
+  if (logicBtn){
+    logicBtn.addEventListener("click", () => {
+      if (isThinking) return;
+      isThinking = true;
 
-          if (thinkingTimer) clearTimeout(thinkingTimer);
-          thinkingTimer = setTimeout(() => {
-            thinkingLine.style.display = "none";
-            metrics.classList.add("is-visible");
-            isThinking = false;
-          }, 1600);
-        });
-      }
+      thinkingLine.style.display = "flex";
+      logicContent.style.display = "none";
+
+      if (thinkingTimer) clearTimeout(thinkingTimer);
+      thinkingTimer = setTimeout(() => {
+        thinkingLine.style.display = "none";
+        logicContent.style.display = "block";
+        isThinking = false;
+      }, 1600);
+  });
+}
+
+}
+
+cardsEl.addEventListener("scroll", () => {
+  const cards = Array.from(cardsEl.querySelectorAll(".t-card"));
+  const box = cardsEl.getBoundingClientRect();
+  const center = box.top + box.height / 2;
+
+  let closest = null;
+  let closestDistance = Infinity;
+
+  cards.forEach((card) => {
+    const rect = card.getBoundingClientRect();
+    const cardCenter = rect.top + rect.height / 2;
+    const distance = Math.abs(center - cardCenter);
+
+    if (distance < closestDistance) {
+      closestDistance = distance;
+      closest = card;
     }
+  });
+
+  if (closest) {
+    const key = closest.dataset.key;
+    if (key && key !== activeKey) {
+      setActive(key, false);
+    }
+  }
+});
+
 
     // initial render
     renderCards();
@@ -996,11 +1245,32 @@
     // ----- Contact form (simulated) -----
     const form = $("#contactForm");
     const success = $("#successMsg");
-    form.addEventListener("submit", (e) => {
+
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      success.classList.remove("is-visible");
-      window.setTimeout(() => success.classList.add("is-visible"), 250);
-    });
+
+      const data = new FormData(form);
+
+      try {
+        const res = await fetch(form.action, {
+          method: "POST",
+          body: data,
+          headers: {
+            Accept: "application/json"
+          }
+        });
+
+        if (res.ok) {
+          form.reset();
+          success.classList.add("is-visible");
+        } else {
+          alert("Something went wrong. Please try again.");
+        }
+      } catch (err) {
+        alert("Unable to send message right now.");
+  }
+});
+
 
     // ----- Human behind CV (active floating cards) -----
     const humanCards = $$(".h-card");
